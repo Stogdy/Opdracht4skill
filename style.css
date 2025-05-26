@@ -1,0 +1,262 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'montserrat', sans-serif;
+    font-size: 1.6rem;
+}
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 2rem;
+    font-family: sans-serif;
+    background-image: url(images/champloo_gif4.gif);
+    padding: 2rem;
+    background-size: auto; 
+    
+  
+  }
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cart-button {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #000;
+}
+
+.cart-button p.fa-solid {
+  font-size: 1.5rem;
+}
+
+#counter {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.topbar__nav a {
+  text-decoration: none;
+  color: #333;
+  margin-right: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.topbar__right{
+  display: relative;
+  flex: 1;
+  align-items: right;
+  gap: 1rem;
+  width: 5rem;
+}
+
+.topbar__nav a:hover {
+  color: #000;
+}
+
+
+.products {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    gap: 2rem;
+    min-height:90vh;
+}
+  
+.products__product {
+    list-style: none;
+    background: white;
+    box-shadow: 0 2rem 5rem rgba(10, 20, 20, 10.2);
+    border-radius: 0rem;
+}
+
+.product--first{
+    grid-row: 2 / 10;
+    grid-column: 1 / 5;
+    padding: 4rem;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.product--second{
+    grid-row: 2 / 10;
+    grid-column: 5 / 9;
+    padding: 4rem;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.product--first > img{
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.product--second > img{
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.product--third > img{
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.product--third{
+    grid-row: 2 / 10;
+    grid-column: 9 / 13;
+    padding: 4rem;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+}
+.buttson{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#button{
+    min-height: 7rem;
+    min-width: 50rem;
+    border: 3px solid rgb(255, 255, 255);
+    list-style: none;
+    background: rgb(32, 157, 235);
+    box-shadow: 0 2rem 5rem rgba(2, 2, 2, 0.2);
+    font-size: 3  rem;
+    
+    margin-top: 2rem;
+}
+    
+
+
+.product--third > #button{
+    min-height: 7rem;
+    min-width: 50rem;
+    border: 3px solid rgb(38, 126, 242);
+    list-style: none;
+    background: rgb(32, 157, 235);
+    box-shadow: 0 2rem 5rem rgba(2, 2, 2, 0.2);
+    font-size: 3rem;
+    
+    margin-top: 2rem;
+}
+
+
+.codepen-button {
+    font-family: monospace;
+    font-weight: bolder;
+    display: block;
+    cursor: pointer;
+    color: #000;
+    margin: 0 auto;
+    position: fixed;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 0.3rem;
+    width: 13rem;
+    isolation: isolate;
+    transform: scale(2.85);
+    z-index: 1000;
+    right:16.4rem;
+  }
+  
+  .codepen-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 420%;
+    height: 120%;
+    background: linear-gradient(
+      115deg,
+      #000000,
+      hsl(0, 0%, 30%),
+      #000000,
+      #4e4e4e,
+      #000000
+    );
+    background-size: 25% 100%;
+    animation: border-animation 0.75s linear infinite;
+    animation-play-state: paused;
+    translate: -5% 0%;
+    transition: translate 0.25s ease-out;
+  }
+  
+  .codepen-button:hover::before {
+    animation-play-state: running;
+    transition-duration: 0.75s;
+    translate: 0% 0%;
+  }
+  
+  @keyframes border-animation {
+    to {
+      transform: translateX(-25%);
+    }
+  }
+  
+  .codepen-button span {
+    position: relative;
+    display: block;
+    padding: 0.5rem 2.5rem;
+    font-size: 0.1rem;
+    background: #fff;
+    border-radius: 2px;
+    height: 100%;
+  }
+  
+  .codepen-button .span {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .codepen-button .p {
+    margin: 1;
+    font-size: 1.5rem;
+  }
+  
+ 
+
+
+ 
