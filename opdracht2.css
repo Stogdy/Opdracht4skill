@@ -1,7 +1,7 @@
 .Titel{
     text-align: center;
     font-size: 2rem;
-    font-family: "Poppins", sans-serif;
+    font-family: "montserrat", sans-serif;
     font-weight: 200;
     font-style: normal;
     font-size: 5rem;
@@ -9,4 +9,12 @@
 
 body{
     background-color: #DDFFD9;
+}
+.fontcool{
+font-family: "montserrat", sans-serif;
+}
+
+.artikel{
+   height: 100vh;
+   box-shadow: 200cm;
 }
