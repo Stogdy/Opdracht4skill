@@ -45,17 +45,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const newArticle = document.createElement('article');
             newArticle.classList.add('artikel');
 
-            // Insert a video every 3rd item
+            
             if (i === 2) {
                 const video = document.createElement('video');
-                video.src = 'videos/AT-cm_602566817.mp4'; // Make sure this path is correct
+                video.src = 'videos/AT-cm_602566817.mp4'; 
                 video.classList.add('autoplay-video');
-                video.muted = true; // Required for autoplay in most browsers
+                video.muted = true; 
                 video.playsInline = true;
                 video.loop = true;
                 video.style.width = '100%';
 
-                // Volume slider
+                
                 const volumeSlider = document.createElement('input');
                 volumeSlider.type = 'range';
                 volumeSlider.min = 0;
