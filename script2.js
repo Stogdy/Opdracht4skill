@@ -1,13 +1,88 @@
 document.addEventListener('DOMContentLoaded', () => {
     const content = document.querySelector('.content');
 
+    const imagePaths = [
+        'images/champloo_gif1.gif',
+        'images/champloo_gif2.gif',
+        'images/champloo_gif3.gif',
+        'images/champloo_gif4.gif'
+    ];
+
+    function getRandomImage() {
+        const randomIndex = Math.floor(Math.random() * imagePaths.length);
+        return imagePaths[randomIndex];
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+                video.play().catch(err => {
+                    console.warn('Autoplay failed', err);
+                });
+            } else {
+                video.pause();
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
     function loadMoreContent() {
         for (let i = 0; i < 5; i++) {
-            const newDiv = document.createElement('div');
-            newDiv.textContent = 'New content block';
-            newDiv.classList.add('item');
-            content.appendChild(newDiv);
-            
+            const newArticle = document.createElement('article');
+            newArticle.classList.add('artikel');
+
+            // Insert a video every 3rd item
+            if (i === 2) {
+                const video = document.createElement('video');
+                video.src = 'videos/AT-cm_602566817.mp4'; // Make sure this path is correct
+                video.classList.add('autoplay-video');
+                video.muted = true; // Required for autoplay in most browsers
+                video.playsInline = true;
+                video.loop = true;
+                video.style.width = '100%';
+
+                // Volume slider
+                const volumeSlider = document.createElement('input');
+                volumeSlider.type = 'range';
+                volumeSlider.min = 0;
+                volumeSlider.max = 1;
+                volumeSlider.step = 0.01;
+                volumeSlider.value = 0.5;
+                volumeSlider.style.width = '100%';
+                volumeSlider.style.marginTop = '5px';
+
+                volumeSlider.addEventListener('input', () => {
+                    video.volume = volumeSlider.value;
+                });
+
+                newArticle.appendChild(video);
+                newArticle.appendChild(volumeSlider);
+                content.appendChild(newArticle);
+
+                videoObserver.observe(video);
+            } else {
+                const img = document.createElement('img');
+                img.src = getRandomImage();
+                img.alt = 'Extra image';
+                newArticle.appendChild(img);
+                content.appendChild(newArticle);
+            }
+
+            observer.observe(newArticle);
         }
     }
 
@@ -16,6 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
             loadMoreContent();
         }
     });
+
+    
+    const artikels = document.querySelectorAll('.artikel');
+    artikels.forEach(artikel => observer.observe(artikel));
 
     
     loadMoreContent();
